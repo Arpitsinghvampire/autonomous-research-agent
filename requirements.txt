@@ -1,0 +1,9 @@
+langchain-core
+langchain-ollama
+ddgs
+arxiv
+pydantic
+python-dotenv
+requests
+beautifulsoup4
+streamlit

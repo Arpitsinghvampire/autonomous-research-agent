@@ -1,0 +1,26 @@
+# Use a lightweight Python image
+FROM python:3.11-slim
+
+# Set working directory
+WORKDIR /app
+
+# Prevent Python from writing bytecode
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# Display Python logs immediately
+ENV PYTHONUNBUFFERED=1
+
+# Install dependencies
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+# Copy project files
+COPY . .
+
+# Expose Streamlit port
+EXPOSE 8501
+
+# Start Streamlit
+CMD ["streamlit", "run", "app.py", "--server.address=0.0.0.0", "--server.port=8501"]
